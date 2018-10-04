@@ -1,0 +1,20 @@
+button.App__active__1xM0x
+{
+	font-weight:700;
+	background-color:red;
+    cursor:pointer;
+	border: none;
+    color: white;
+    text-align: center;
+	padding: 8px 16px;
+	display: inline-block;
+
+	}
+video{
+	width:100%;
+	height:calc(100% - 200px)
+}
+.App__controls__2ENg3
+{
+	margin:10px auto
+	}

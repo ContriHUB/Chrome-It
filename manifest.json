@@ -1,0 +1,49 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "js/jquery.min.js", "js/nlp_compromise.min.js", "js/on-off-switch.js", "js/on-off-switch-onload.js", "js/jquery-1.11.2.min.js", "background.js", "twitter/js/background.js","readaloud/js/jquery.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "chromeit128.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Chrome-It"
+   },
+   "chrome_url_overrides": {
+      "newtab": "index.html"
+   },
+   "content_scripts": [
+        {
+            "matches": [ "<all_urls>" ],
+            "js" : [
+                "./background-process/gesture.js",
+                "./content-scripts/interact.js",
+                "./content-scripts/easing.js"
+            ],
+            "run_at":"document_end"
+        }
+    ],
+   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+   "description": "Now use your voice to control your browser.",
+   "icons": {
+      "128": "chromeit128.png",
+      "48": "chromeit48.png",
+      "16": "chromeit16.png"
+   },
+   "options_ui": {"page": "twitter/options.html"},
+   "commands": {
+     "_execute_browser_action": {
+       "suggested_key": {
+         "default": "Alt+T"
+       }
+     }
+   },
+   //"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjkyZJa1nr/6MFayEGPz9SUxJxSi4T91Smhy99AqU7BACWX2AsaX20vPze6HvsJdOZt55g20o6gGAsRvx9fg3M99Z3igPL3BZiXx7zInqggFBjyVa5K8atxJLFHN6H1zU9cqKOKyLRV4r/KorYFmdpLYRsQbbgOP79BXISE4u1FrRbvJ6nWhceLTUZIqIhV3qNgeAnNB6/ZBgjavaXiHsVlT9sB7DZvqxkaRF/QtPrtCBtRMlzKJ5Y+164PrMOKX1ZfUeSdZECdCcGqgMVyc8v1PSP5P8ZBw2y4oWOOOYXUjGr/h1XSdJXbBFxp0fUDrapZMyu4jPYa1KAICkuhfInwIDAQAB",
+   "manifest_version": 2,
+   "name": "Chrome-It",
+   "permissions": [  "\u003Call_urls>", "contextMenus","tts" ,"activeTab","ttsEngine", "webNavigation","bookmarks", "history", "geolocation", "topSites", "tabs","downloads", "notifications", "desktopCapture" ,"<all_urls>", "https://ajax.googleapis.com/", "http://clients1.google.com/complete/search", "http://suggestqueries.google.com/complete/search", "storage" ],
+   "short_name": "Chrome-It",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0"
+}

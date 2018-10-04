@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>New Tab</title>
+    <link rel="icon" type="image/png" href="tap.png"/>
+
+    <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/W3.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <script src="js/jquery.min.js"></script>
+    <script src='js/nlp_compromise.min.js'></script>
+    <script type="text/javascript" src="js/xml2json.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/offline.min.js"></script>
+</head>
+
+<body id='body' class="overlay" oncontextmenu="return false;">
+
+    <div class="w3-container" >
+                
+
+    <div class="w3-bar w3-margin-top">
+
+    <button id="menu" class="w3-bar-item  w3-btn w3-right w3-margin-right navbtn" ><i id="menu" class="fa fa-bars"></i></button>
+     <button id="recent" class="w3-bar-item  w3-btn w3-right w3-margin-right navbtn mini" >Top Visits</button>
+    <button id="bookmark" class="w3-bar-item  w3-btn w3-right w3-margin-right navbtn mini" style="">Bookmarks</button>
+    
+    <button id="chromeitbar" class="w3-bar-item w3-left w3-btn mini" title="Rate Us"  style="margin-left:auto;margin-right:auto;display:block;margin-top:auto;margin-bottom:auto" >ChromeIT : Browsing Redefined</button>
+    
+</div>
+<div class="container abs center overlay" id="containment" style="margin-top: 0%;">
+    <div class="row">
+        <div class="col-md-12 datetime-container">
+            <h2 id="time"></h2>
+            <h5 id="date"></h5>
+        </div>
+        <div class="col-md-12">
+            <div class="chromeit-container">
+                <select name="searchengine" id="searchengine" class="search-engine">
+                    <option selected="selected" >Google</option>
+                    <option>Bing</option>
+                    <option>Wikipedia</option>
+                </select>
+                <div>
+                <input class="search-box autocomplete" title="search" name="chat" id="chatbox"
+                       oncontextmenu="return true;">
+                <!--<a href="#" class="mic" title="Search by voice" id="rec"></a>-->
+                <span class="mic" id="rec">Speak</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 recent-container w3-container">
+            <a class="draggable mini" id="draggable1" href="http://google.com" style="margin-left: 27%" title="Google"><img
+                    id="draggable1img" src="images/google.png" style=""></a>
+            <a class="draggable mini" id="draggable2" href="http://wikipedia.com" style="margin-left: 14%" title="Wikipedia"><img
+                    src="images/wikipedia.png" ></a>
+            <a class="draggable mini" id="draggable4" href="http://facebook.com" style="margin-left:14%"
+               title="Facebook"><img
+                    src="images/facebook.png" ></a>
+            
+        </div> 
+        <div class="col-md-12 recent-container">
+            <a class="draggable mini" id="draggable5" href="http://cricbuzz.com" style="margin-left: 27%"
+               title="Cricbuzz"><img
+                    src="images/crickbuzz.png" ></a>
+            <a class="draggable mini" id="draggable6" href="http://youtube.com" style="margin-left: 14%" title="Youtube"><img
+                    src="images/youtube.png"></a>
+            <a class="draggable mini" id="draggable9" href="http://gmail.com" style="margin-left: 14%" title="Gmail"><img
+                    src="images/gmail.ico" ></a>
+        </div>
+    </div>
+</div>
+<!--<body id='body' oncontextmenu="return false;">
+<div class="abs center overlay" id="containment">
+    <h2 id="time">10:06:00</h2>
+    <h5 id="date">2017-08-23</h5>
+    <select name="searchengine" id="searchengine"
+            style="text-align: center;height: 55px; width: 7%;font-family: 'Courgette', cursive; ">
+        <option selected="selected">Google</option>
+        <option>Bing</option>
+        <option>Wikipedia</option>
+    </select>
+    <input style="width: 40%; height: 50px; border: 1px solid black; margin: 10px;font-family: 'Courgette', cursive;"
+           type="text" class="autocomplete" name="chat" id="chatbox" placeholder="Hi there! Type here to Search."
+           oncontextmenu="return true;">
+    <button style="width: 7%; height: 55px;font-family: 'Courgette', cursive;" id="rec">Speak</button>
+    <br>
+
+
+    <a class="draggable" id="draggable1" href="http://google.com" style="padding-left: 15%" title="Google"><img
+            id="draggable1img" src="images/google.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable2" href="http://wikipedia.com" style="padding-left: 5%" title="Wikipedia"><img
+            src="images/wikipedia.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable3" href="http://saavan.com" style="padding-left: 5%" title="Savaan"><img
+            src="images/saavan.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable4" href="http://facebook.com" style="padding-left: 5%" title="Facebook"><img
+            src="images/facebook.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable5" href="http://cricbuzz.com" style="padding-left: 5%" title="Cricbuzz"><img
+            src="images/crickbuzz.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable6" href="http://youtube.com" style="padding-left: 5%" title="Youtube"><img
+            src="images/youtube.ico" style="width:100px;height:100px;"></a>
+    <br/>
+    <a class="draggable" id="draggable7" href="http://amazon.com" style="padding-left: 33%" title="Amazon"><img
+            src="images/amazon.ico" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable8" href="http://flipkart.com" style="padding-left: 5%" title="Flipkart"><img
+            src="images/flipkart.png" style="width:100px;height:100px;"></a>
+    <a class="draggable" id="draggable9" href="http://gmail.com" style="padding-left: 5%" title="Gmail"><img
+            src="images/twitter.ico" style="width:100px;height:100px;"></a>
+</div>
+-->
+<div class="upload-btn-wrapper mini"
+     style="position: absolute; bottom:0; right: 0; padding-bottom: 1%; padding-right: .5%; cursor:pointer;">
+    <button class="btn" style="cursor:pointer" >Change Background</button>
+    <input type="file" id="file" name="file" accept="images/*" style="cursor:pointer"/>
+</div>
+
+<div class="mini" style="position: absolute; color:white; bottom:0;padding-bottom: 4%; padding-right: .5%;line-height: 0px">
+    <span class="w3-left"  id="desc"></span>
+    <h2 class="w3-center"  id="temp"></h2>
+    <span class="w3-left"  id="city"></span>
+</div>
+<center>
+<!--
+<div id = "quotes" class="mini">
+    <p id="quotesp"></p>
+        <cite id="quotesc" style="text-align: right;"></cite>
+</div>
+-->
+</center>
+
+<div id="id01" class="w3-card-8 w3-right w3-margin-right " style="width:22%; height: 20%; display: none;">
+     <div class="w3-container w3-deep-orange w3-text-white">
+        <button id="closebtn" class=" w3-button w3-right">&times;</button>
+        <span>Your BookMarks</span>
+    </div>
+        <ul id ="bookmark-list" class="w3-dark-gray w3-text-white w3-hoverable w3-small w3-ul abs overlay" style="overflow-x:hidden;overflow-y: scroll;list-style: none; width: 21.5%;">
+         </ul>
+            
+</div>
+    </footer>
+  </div>
+
+<div id="id02" class="w3-card-2 w3-right w3-margin-right  " style="width:20%; height: 80%; display: none;">
+
+  <div class="w3-container  w3-text-white w3-deep-orange">
+        <button id="closebtn2" class=" w3-button w3-right">&times;</button>
+        <span>Top Visit List</span>&nbsp;&nbsp;<button id="clearAll" class="w3-btn w3-hover-black w3-center">clear</button>
+
+    </div>
+        <ul id ="recent-list" class="w3-dark-gray w3-text-white w3-hoverable w3-small w3-ul abs overlay" style="list-style: none; width: 20%;">
+         </ul>
+  </div>
+  
+
+
+  <div id="id03" class="w3-card-2 w3-right w3-margin-right " style="width:20%; height: 40%; display: none;">
+          <div class="w3-container w3-dark-gray">
+        <button id="closebtn3" class=" w3-button w3-right">&times;</button>
+         </div>
+         <div class="w3-container w3-dark-gray abs overlay" style="width: 20%;height: 40%;">
+            <span style="color:white;font-family: 'Courgette', cursive; font-weight: 500;" > Random Images</span> <button id="randimg" class="w3-tag w3-tiny w3-button w3-deep-orange w3-right" style="width: 18%;height: 15% ">OFF</button>
+            <hr/>
+            <span style="color:white;font-family: 'Courgette', cursive; font-weight: 500;" > Minimal Mode</span> <button id="minimode" class="w3-tag w3-tiny w3-button w3-deep-orange w3-right" style="width: 18%;height: 15% "></button>
+            <hr/>
+            <span style="color:white;font-family: 'Courgette', cursive; font-weight: 500;" >&#8457;</span> <button id="defar" class="w3-tag w3-tiny w3-button w3-deep-orange w3-right" style="width: 18%;height: 15% "></button>
+            <hr/>
+            <button id="setwall" class="w3-tag w3-tiny w3-deep-orange w3-button" style="width: 80%;height: 15% ">Set This image As permanent Wall</button>
+         </div>
+  </div>
+</div>
+<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/index.js"></script>
+</body>
+</html>

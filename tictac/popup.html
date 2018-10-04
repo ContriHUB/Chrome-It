@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tac</title>
+    <script src="jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Modal -->
+    <div id="game_over_modal" class="modalDialog" >
+        <div>
+            <h2 id="game_over_message">You Win!</h2>
+            <p>Would you like to play again?</p>
+            <div>
+                <button id="btn_play_again" class="modalButton">Yes</button>
+                <button id="btn_end_game" class="modalButton">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page_content" >
+        <div id="popup_container">
+			<img id="btn_options_back_main" src="backArrow.png" alt="back" width="10%" />
+            <h5>Play Tic Tac Toe Against the Computer</h5>
+            <table cellspacing="0" id="tac_board">
+            </table>
+
+            <div class="major_button" id="options_button">
+                <img src="settingsIcon.png" alt="options" class="options_icon" />
+                <span>Options</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

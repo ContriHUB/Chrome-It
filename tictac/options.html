@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tac Options</title>
+    <script src="jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Modal -->
+    <div id="options_modal" class="modalDialog">
+        <div>
+            <h2>Settings Saved!</h2>
+            <p>Return to the game?</p>
+            <div>
+                <button id="btn_options_return" class="modalButton">Yes</button>
+                <button id="btn_options_stay" class="modalButton">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page_content">
+        <div id="options_container">
+            <img id="btn_options_back" src="backArrow.png" alt="back" />
+            <h5>Tac Options</h5>
+            <div class="option_selectors">
+                <label class="options_label" for="difficulty_select">Difficulty:</label>
+                <select class="options_select" id="difficulty_select">
+                    <option value="easy">Easy</option>
+                    <option value="normal">Normal</option>
+                    <option value="difficult">Difficult</option>
+                    <option value="impossible">Impossible</option>
+                </select>
+            </div>
+
+            <div class="major_button" id="options_save">
+                <img src="saveIcon.png" alt="options" class="options_icon" />
+                <span>Save</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

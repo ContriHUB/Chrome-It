@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  
+  
+  <script type="text/javascript" src="popup.js"></script>
+
+  <style type="text/css">
+  label.heading{font-size: 14px; font-weight: bold;}
+  textarea#mynotes{line-height: 20px; width:100%; max-width: 100%; min-height: 300px; border: none; outline: none;
+    background: #00e600;/*#fcf9ca*/
+    -webkit-box-shadow: inset 0px 0px 20px 0px rgba(102,102,102,0.5);
+    -moz-box-shadow: inset 0px 0px 20px 0px rgba(102,102,102,0.5);
+    box-shadow: inset 0px 0px 20px 0px rgba(102,102,102,0.5);
+  }
+  .smalltext, .smalltext a{font-size: 11px; color: #ccc; font-style: italic; float: right;}
+  a.smalllink{font-size: 11px; color:yellow;}
+  </style>
+
+  </head>
+  <body  style="width:304px;background:black;color:white">
+  
+    <div style="width:300px; padding-right:2px;background:black;color:white">
+	<!--<img id="notes_back" src="../todo/images.png" width="5%" alt="back" /> -->
+      <label class="heading">Notes <span class="smalltext">Last Saved: <span id="datetime"></span></span></label><br /><br />
+      <textarea id="mynotes"></textarea><br />
+      <a href="javascript:;" class="smalllink" id="LoadPrevNote">Load Previous Note</a>
+      <br />
+	</div>
+
+  </body>
+</html>

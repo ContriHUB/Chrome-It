@@ -1,0 +1,23 @@
+div.Options__message__1Ygvk{
+	text-aling:center;
+	font-size:20px;
+	margin:10px
+}
+div.Options__message__1Ygvk .Options__info__2jnkG
+	{
+		color:#31708f;
+		background-color:#d9edf7;
+		border-color:#bce8f1
+	}
+div.Options__message__1Ygvk .Options__success__2gbvO
+	{
+		color:#3c763d;
+		background-color:#dff0d8;
+		border-color:#d6e9c6
+	}
+div.Options__message__1Ygvk .Options__error__t_RG4
+	{
+		color:#a94442;
+		background-color:#f2dede;
+		border-color:#ebccd1
+	}

@@ -1,0 +1,146 @@
+/* Table Styles */
+#btn_options_back {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    position: fixed;
+    top: 11px;
+    left: 20px;
+}
+
+#options_modal > div {
+    margin-top: 45%;
+}
+
+#options_save {
+    margin-top: 220px;
+}
+
+#tac_board {
+    margin-left: 18px;
+}
+
+body {
+    background-image: url("concrete_seamless.png");
+}
+
+h5 {
+    text-align: center;
+}
+
+.br {
+    border-right: 2px solid black;
+}
+
+.bl {
+    border-left: 2px solid black;
+}
+
+.bt {
+    border-top: 2px solid black;
+}
+
+.bb {
+    border-bottom: 2px solid black;
+}
+
+.cell {
+    font-size: 35px;
+    height: 60px;
+    padding-left: 17px;
+    width: 43px;
+    vertical-align: middle;
+}
+
+.cell.content_empty:hover {
+    background-color: #ADD6FF;
+}
+
+.major_button {
+    cursor: pointer;
+    margin: 55px 2px 2px 2px;
+    padding: 5px 5px 5px 55px;
+    background-color: rgba(153, 153, 153, 0.4);
+}
+
+.major_button:hover {
+    background-color: rgba(122, 122, 122, 0.4);
+}
+
+.major_button span {
+    margin-left: 20px;
+    position: relative;
+    bottom: 8px;
+}
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    z-index: 99;
+    background: rgba(0,0,0,0.6);
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+}
+
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    color: white;
+    position: relative;
+    margin-top: 95%;
+    padding: 5px 20px 13px 20px;
+    background: #07a;
+}
+
+.modalButton {
+    background: #07a;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    padding: 3px 6px;
+    width: 70px;
+}
+
+.modalButton:hover {
+    background: #C2C2C2;
+}
+
+.modalButton:active {
+    background: #999;
+}
+
+.options_icon {
+    height: 30px;
+    width: 30px;
+}
+
+.options_label {
+    display: inline-block;
+    font-size: 14px;
+    width: 80px;
+}
+
+.options_select {
+    display: inline-block;
+    width: 120px;
+}
+
+.option_selectors {
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.page_content {
+    height: 325px;
+    width: 230px;
+}

@@ -1,0 +1,320 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#body:before{
+    opacity: 0;
+}
+
+#temp{
+    font-size: 5vw;
+    font-family: 'Courgette', cursive;
+}
+
+#desc{
+     font-size: 2vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 500;
+}
+#city{
+    font-family: 'Courgette', cursive;
+    font-size: 1.5vw;
+    font-weight: 400;
+}
+#chromeitbar{
+    font-family: 'Courgette', cursive;
+    color: white;
+    font-size: 2vw;
+    font-weight: 400;
+    margin-left: 0;
+}
+canvas {
+    background: #f9f9f9;
+}
+
+body.overlay:before{
+    opacity: .4;
+}
+div.overlay {
+    width: 100%;
+    opacity: 1;
+}
+
+.time h2 {
+    margin: 0;
+    display: block;
+    color: white;
+    font-size: 5vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.date h5 {
+    margin: 0;
+    display: block;
+    color: white;
+    font-size: 2vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+div.overlay h1 {
+    margin: 0;
+    display: block;
+    color: #333333;
+    font-size: 10vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+div.overlay h2 {
+    margin: 0;
+    display: block;
+    color: white;
+    font-size: 5vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+div.overlay h5 {
+    margin: 0;
+    display: block;
+    color: white;
+    font-size: 2vw;
+    font-family: 'Courgette', cursive;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Utility */
+.abs {
+    position: absolute;
+    height: 70%;
+}
+
+.left {
+    left: 5px;
+}
+
+.right {
+    right: 5px;
+}
+
+.bottom {
+    bottom: 5px;
+}
+
+.top {
+    top: 5px;
+}
+
+.hcenter {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vcenter {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay {
+    z-index: 999;
+}
+
+.hidden {
+    display: none;
+}
+
+.draggable img:hover {
+    -webkit-transform: translate(0px, -4px);
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    opacity: .50;
+    color: white;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courgette', cursive;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 60px;
+    position: absolute;
+    cursor: pointer;
+    left: 0;
+    color: white;
+    top: 0;
+    opacity: 0;
+}
+
+.ui-autocomplete {
+    border: 1px solid #999;
+    background: #fff;
+    cursor: default;
+    overflow: auto;
+}
+
+.ui-autocomplete {
+    padding: 10px 5px;
+    font-size: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ui-autocomplete-selected {
+    background: #f0f0f0;
+}
+
+.ui-autocomplete strong {
+    font-weight: normal;
+    color: #3399ff;
+}
+
+.search-box {
+    width: 520px;
+    padding: 12px 30px 12px 12px;
+    font-size: 16px;
+    border: none;
+    float: left;
+    margin-left: 10px;
+    background-color: #fff;
+    height: 44px;
+    vertical-align: top;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.search-box:hover, .search-engine:hover {
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.search-box:focus {
+    outline: none;
+}
+
+.mic {
+    /*background: url('../images/mic-icon.png') no-repeat 0 0;
+    background-size: 24px 24px;*/
+    display: inline-block;
+    height: 23px;
+    width: 18px;
+    vertical-align: middle;
+    left: -50px;
+    top: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.search-engine {
+    cursor: pointer;
+    margin-left: 2px;
+    width: 120px;
+    float: left;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    background-color: #fff;
+    height: 44px;
+    vertical-align: top;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.chromeit-container {
+    width: 1200px;
+    padding-left: 350px;
+}
+
+.datetime-container {
+    min-height: 150px;
+    width: 1200px !important;
+    padding-left: 250px;
+}
+
+.draggable img {
+    border-radius: 50px;
+    border: 5px solid #FFF;
+    background: #FFF;
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.recent-container {
+    margin-top: 50px;
+    width: 1200px;
+    padding-left: 160px;
+}
+
+#quotes {
+    position:absolute;
+    bottom:10px;
+    right:20%;
+    left:20%;
+    color: white;
+    font-size: 15px;
+    font-family: 'Courgette', cursive;
+}
+
+.navbtn{
+    color:white;
+    font-family: 'Courgette', cursive;
+    text-align: center;
+    font-size: 15px;
+}
+
+.containerof {
+    position:relative;
+    border: 1px solid #ddd;
+}
+.containerof button {
+    position:absolute;
+    top: 3px;
+    right:3px;
+    width: 60px;
+}
+.containerof textarea {
+    position:relative;
+    border:none;
+    resize: none
+    outline: none; /* add this to stop highlight on focus */
+     width:40px;
+    height: 40px;
+}
