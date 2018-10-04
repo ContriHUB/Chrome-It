@@ -55,4 +55,3 @@ Respective commands have been shown after each feature.
 ![alt tag](https://i.imgur.com/e5X26Xjl.jpg)
 
 
-#### Link to Demonstration Video: https://youtu.be/9Z13GF8aj44
