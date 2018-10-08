@@ -11,6 +11,9 @@ $("#todo_button").on('click', function() {
 $("#notes_button").on('click', function() {
   document.location.href = "../notes/popup.html";
 });
+$("#jokes_button").on('click', function() {
+  document.location.href = "../jokes/popup.html";
+});
 $("#2048_button").on('click', function() {
   document.location.href = "../2048/popup.html";
 });
