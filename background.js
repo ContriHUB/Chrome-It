@@ -282,8 +282,22 @@ $(document).ready(function(){
 		
     }
     function provideJoke(){
-		// Complete the execution of this function to return a joke 
-    	// You may use APIs like http://api.icndb.com/jokes/random
+
+    	var xhr = new XMLHttpRequest();
+		xhr.open('GET', "https://icanhazdadjoke.com/");
+		xhr.setRequestHeader("Accept", "application/json");
+		xhr.send();
+		 
+		xhr.addEventListener("readystatechange", processRequest, false);
+		function processRequest(e) {
+		    if (xhr.readyState == 4 && xhr.status == 200) {
+		    	//alert(xhr.responseText);
+		        var response = xhr.responseText;
+		        x = JSON.parse(response);
+		        return x["joke"];
+		        //alert(x["joke"]);
+	   		}
+		}
 	};
     //sending the data to server
     function send() {
