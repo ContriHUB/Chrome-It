@@ -78,7 +78,7 @@ var doGroup = function() {
             
         }
     });
-    var data = "key=536589752258a422b8dc6d26e1127a13&lang=en&txt=";
+    var data = "key=f298537e035d0726e5c18c66544cb447&lang=en&txt=";
     var moveAll = function(tabs){
         tempTabs = tabs;
         my_urls = [];
@@ -105,9 +105,9 @@ var doGroup = function() {
             {
                 data = data.concat("\n",my_titles[i]);
             }
-            xhr.open("POST", "http://api.meaningcloud.com/clustering-1.1");
-            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-            
+            xhr.open("POST", "https://api.meaningcloud.com/clustering-1.1");
+	    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
             xhr.send(data);
     }
     var count = 0;
@@ -115,7 +115,7 @@ var doGroup = function() {
         var my_new_titles = new Array(my_titles.length);
         for( var i = 0 ;i < my_titles.length ; i++)
         {
-            var data = "key=536589752258a422b8dc6d26e1127a13&txt=";
+            var data = "key=f298537e035d0726e5c18c66544cb447";
             data = data.concat(my_titles[i],"&model=IAB_en");
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
