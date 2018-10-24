@@ -401,8 +401,9 @@ $(document).ready(function(){
 						else if(data.result.metadata.intentName === "open history")
 						{
 							Speech("opening! History.");
-							// Add code for opening history
-							// EASY:2
+							chrome.tabs.create({'url': 'chrome://history/'});
+							alert(data.result.fulfillment.speech);
+
 						}
 						else if(data.result.fulfillment.speech === "@prev"){
 
