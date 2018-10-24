@@ -294,7 +294,7 @@ $(document).ready(function(){
 		    	//alert(xhr.responseText);
 		        var response = xhr.responseText;
 		        x = JSON.parse(response);
-		        return x["joke"];
+		        Speech(x["joke"]);
 		        //alert(x["joke"]);
 	   		}
 		}
