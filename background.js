@@ -395,8 +395,8 @@ $(document).ready(function(){
 						else if(data.result.metadata.intentName === "setting")
 						{
 							Speech("opening! Settings.");
-							// Add code for opening settings
-							// EASY:1 							
+							chrome.tabs.create({'url': 'chrome://settings/'});
+							alert(data.result.fulfillment.speech);						
 						}
 						else if(data.result.metadata.intentName === "open history")
 						{
