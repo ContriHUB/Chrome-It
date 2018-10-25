@@ -441,6 +441,10 @@ $(document).ready(function(){
 						Speech("I am searching this on wikipedia.");
 						//Code to search content directly on wikipedia.	
 						// MEDIUM: 2
+						var res = txt.toLowerCase();
+						res = res.replace('search','');
+						res = res.replace('on wikipedia','');
+						chrome.tabs.create({'url' : 'https://en.wikipedia.org/wiki/' +res});
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
