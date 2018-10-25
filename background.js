@@ -493,8 +493,7 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("news".toLowerCase())) !==-1)
 					{
 						Speech("Opening");
-						//  Code to open google news.
-						// EASY: 9
+						chrome.tabs.create({'url': 'https://news.google.com/'});
                  		
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("inbox".toLowerCase())) !==-1)
