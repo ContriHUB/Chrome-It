@@ -550,14 +550,16 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).indexOf("zoom in".toLowerCase())) !==-1)
 					{
 						Speech("Zooming in.");
-						  // Code to zoom in
-						  // EASY: 14
+						chrome.tabs.getZoom(function(zoomFactor){
+							chrome.tabs.setZoom(zoomFactor+0.1);
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("zoom out".toLowerCase())) !==-1)
 					{
 						Speech("Zooming out.");
-						// Code to zoom out
-						// EASY: 14
+						chrome.tabs.getZoom(function(zoomFactor){
+							chrome.tabs.setZoom(zoomFactor-0.1);
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tell me a joke".toLowerCase())) !==-1)
 					{
