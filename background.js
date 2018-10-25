@@ -474,11 +474,8 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-						// YOUTUBE SPECIFIC feature
-						;
-						// Code to play currently playing video.
-						// EASY: 7
+						var video = document.getElementsByTagName("video")[0];
+						video.play();
 
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
