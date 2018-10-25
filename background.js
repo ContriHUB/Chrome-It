@@ -449,6 +449,11 @@ $(document).ready(function(){
 	    	        // Code to change body backgroud color
    		    	     // HINT: use simple DOM commands for this.
    		    	     // EASY: 3
+					 
+						txt = txt.toLowerCase();
+						txt.replace("change backgroud","");
+						document.body.style.backgroundColor = ""+txt;
+					 
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
