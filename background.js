@@ -505,7 +505,7 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("incognito".toLowerCase())) !==-1)
 					{
 						Speech("Opening incognito window.");
-						chrome.windows.create({"url": url, "incognito":true});
+						chrome.windows.create({"incognito":true});
 							
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("backward".toLowerCase())) !==-1)
