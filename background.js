@@ -443,6 +443,7 @@ $(document).ready(function(){
 						// MEDIUM: 2
 						var res = txt.toLowerCase();
 						res = res.replace("search","");
+						res = res.replace("on wikipedia","");
 						res = res.replace("wikipedia","");
 						chrome.tabs.create({'url' : 'https://en.wikipedia.org/wiki/' +res});
 						
