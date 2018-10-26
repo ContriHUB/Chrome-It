@@ -281,7 +281,45 @@ $(document).ready(function(){
     function updateRec() {
 		
     }
-    function provideJoke(){
+    function provideJoke()
+	{
+		
+			function loadJSON(path, success, error) 
+				{ 
+				  var xhr = new XMLHttpRequest();
+				  xhr.onreadystatechange = function() 
+				  {
+				    if (xhr.readyState === XMLHttpRequest.DONE) 
+				    {
+				      if (xhr.status === 200) {
+					if (success)
+					  success(JSON.parse(xhr.responseText));
+				      } 
+				    else 
+				      {
+					if (error)
+					  error(xhr);
+				      }
+				    }
+				  };
+				  xhr.open("GET", path, true);
+				  xhr.send();
+				}
+
+				loadJSON('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke',
+				  function(data) {
+				    console.log(data.setup)
+				    console.log(data.punchline)
+				  document.getElementById("joke").innerHTML = data.setup;
+				  document.getElementById("joke-answer").innerHTML = data.punchline;
+
+				  },
+				  function(xhr) {
+				    console.error(xhr);
+				  }
+				);
+
+		
 		// Complete the execution of this function to return a joke 
     	// You may use APIs like http://api.icndb.com/jokes/random
 	};
