@@ -475,9 +475,7 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
-						            // Open tetris game in new tab.
-						            // HINT: You may use tetris.com 
-						   // EASY: 4
+						chrome.tabs.create({'url': 'https://tetris.com/'});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("print".toLowerCase())) !==-1)
 					{
