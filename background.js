@@ -452,7 +452,9 @@ $(document).ready(function(){
 					 
 						txt = txt.toLowerCase();
 						txt.replace("change backgroud","");
-						document.body.style.backgroundColor = ""+txt;
+						var selectedBGColor = document.getElementById(txt).value;
+						document.body.style.backgroundColor = selectedBGColor;
+						//document.body.style.background = selectedBGColor;
 					 
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
