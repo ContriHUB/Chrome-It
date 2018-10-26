@@ -473,11 +473,19 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-						// YOUTUBE SPECIFIC feature
-						;
-						// Code to play currently playing video.
-						// EASY: 7
+						var player;
+						  function onYouTubeIframeAPIReady() {
+							player = new YT.Player('player', {
+							  height: '390',
+							  width: '640',
+							  videoId: 'M7lc1UVf-VE',
+							  events: {
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+							  }
+							});
+						  }
+						 player.playVideo();
 
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
