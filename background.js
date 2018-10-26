@@ -528,10 +528,11 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tab".toLowerCase())) !==-1)
 					{
-						// var integer = parseInt(txt.substring(4));
+						var integer = parseInt(txt.substring(4));
 						Speech("Moving to tab"+integer);
-						// Code to move to a particular indexed tab
-						//// EASY: 13
+						var myTabs = chrome.extension.getViews({type: 'tab'});
+						document.getElementById("myTabs").selectedIndex = integer-1 ;
+						
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("arrange heading".toLowerCase())) !==-1)
 					{
