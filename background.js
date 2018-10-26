@@ -509,7 +509,7 @@ $(document).ready(function(){
 						chrome.windows.create({"incognito":true});
 							
 =======
-						chrome.windows.create({"url": url, "incognito":true});
+						//chrome.windows.create({"url": url, "incognito":true});
 						
 >>>>>>> d9c0409e27865a25c56e3873c4c82c2426765921
 					}
