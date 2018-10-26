@@ -407,10 +407,18 @@ $(document).ready(function(){
 						}
 						else if(data.result.fulfillment.speech === "@prev"){
 
-			                 // Add code for moving to tab to immediate left
-			                   //(you may ignore the case where current tab is the leftmost).
-			                 // MEDIUM: 1
-			                Speech("opening! prev");
+			              	Speech("opening! prev");
+			                var currenttab;
+							chrome.tabs.getSelected(null, function(tab) {
+								currenttab = tab.id;										
+								chrome.tabs.query({}, function (tabs) {
+									for (var i = 1; i < tabs.length; i++) {
+										if(tabs[i].id == currenttab&&i!=0){
+											chrome.tabs.update(tabs[i-1].id, { active: true});
+										}
+									}
+								});
+							});
 						}
 						else {
 							if(data.result.metadata.intentName === "users_name"){
