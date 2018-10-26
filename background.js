@@ -512,6 +512,7 @@ $(document).ready(function(){
 					{
 						Speech("Going backwards in history.");
 						window.history.back();
+						//we can also use window.history.go(-1);
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
