@@ -467,10 +467,20 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("halt".toLowerCase())) !==-1)
 					{
 						//alert(txt);
-						// YOUTUBE SPECIFIC feature
-							// Code to pause currently playing video.
-						// EASY: 6
-						;
+						var player;
+						  function onYouTubeIframeAPIReady() {
+							player = new YT.Player('player', {
+							  height: '390',
+							  width: '640',
+							  videoId: 'M7lc1UVf-VE',
+							  events: {
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+							  }
+							});
+						  }
+						 player.pauseVideo();
+						 
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
