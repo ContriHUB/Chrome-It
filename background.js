@@ -520,13 +520,14 @@ $(document).ready(function(){
 						Speech("Minimizing window.");
 						chrome.windows.getCurrent(function (window){
 							wid= window.id;
-							chrome.windows.update(window.id, {state:"minimized"});
+							chrome.windows.update(wid, {state:"minimized"});
 						});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("maximize".toLowerCase())) !==-1)
 					{
 						Speech("Maximizing window.");
 						chrome.windows.getCurrent(function (window){
+							wid=window.id;
 							chrome.windows.update(wid, {state:"maximized"});
 						});
 					}
