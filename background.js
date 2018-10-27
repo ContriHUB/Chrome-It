@@ -446,16 +446,22 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
 					{
 						Speech("Change backgroud");
-	    	        // Code to change body backgroud color
-   		    	     // HINT: use simple DOM commands for this.
-   		    	     // EASY: 3
-					 
-						txt = txt.toLowerCase();
-						txt.replace("change backgroud","");
-						var selectedBGColor = document.getElementById(txt).value;
-						document.body.style.backgroundColor = selectedBGColor;
-						//document.body.style.background = selectedBGColor;
-					 
+	    	        
+						var makeArray = txt.split(' ');
+						var bColor = makeArray.splice(-3);
+						
+						//for example if user says 'change background color to crimson red'
+						//then this process will select crimson red
+						
+						  if (bColor[0] === 'to') {
+							document.body.style.backgroundColor = bColor[1] + bColor[2];
+						  } else if (bColor[1] === 'to') {
+							document.body.style.backgroundColor = bColor[2];
+						  } else {
+							document.body.style.backgroundColor = bColor[0] + bColor[1] + bColor[2];
+						}
+            
+					
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
