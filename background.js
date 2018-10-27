@@ -439,12 +439,27 @@ $(document).ready(function(){
 					if((idx = (txt.toLowerCase()).lastIndexOf("Wikipedia".toLowerCase())) !==-1)
 					{
 						Speech("I am searching this on wikipedia.");
-						//Code to search content directly on wikipedia.	
-						// MEDIUM: 2
-						var res = txt.toLowerCase();
-						res = res.replace("search","");
-						res = res.replace("on wikipedia","");
-						res = res.replace("wikipedia","");
+						
+						//if i say something like 'Wikipedia Jallianwala Bagh massacre' then 
+						//it will search for Jallianwala Bagh massacre on wiki
+						
+						txt = txt.toLowerCase();
+						var makeArray = txt.split(' ');
+						var search = makeArray.splice(-4);
+						var res;
+						  if (search[0] === 'wikipedia') {
+							res = search[1] + " " + search[2] + " " + search[3];
+						  }
+						  else if (search[1] === 'wikipedia') {
+							res = search[2] + " " + search[3];
+						  } 
+						  else if(search[2] === 'wikipedia'){
+							  res = search[3];
+						  }
+						  else {
+							res = search[0] + " " + search[1] + " " + search[2] + " " + search[3];
+						  }
+						
 						chrome.tabs.create({'url' : 'https://en.wikipedia.org/wiki/' +res});
 						
 					}
