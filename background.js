@@ -555,8 +555,15 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).indexOf("arrange heading".toLowerCase())) !==-1)
 					{
 						Speech("Arranging the headings of the tab");
-			            // Code to arrange tabs alphabetically 
-			            // MEDIUM: 3
+			           	chrome.tabs.query({},function(tabs){
+							tabs.sort(function(a,b){
+								if(a.title<b.title) return -1;
+								else if(a.title>b.title) return 1;
+								else return 0;
+							});
+							for(var i=0 ;i< tabs.length;i++)
+								chrome.tabs.move(tabs[i].id, {index: i});
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("group content".toLowerCase())) !==-1)
 					{
