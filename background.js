@@ -511,8 +511,7 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("backward".toLowerCase())) !==-1)
 					{
 						Speech("Going backwards in history.");
-						// Code to perform functionality of back button.
-						// EASY: 11
+						window.history.back();
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
 					{
