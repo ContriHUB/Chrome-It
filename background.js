@@ -509,6 +509,11 @@ $(document).ready(function(){
 						;
 						// Code to play currently playing video.
 						// EASY: 7
+						chrome.tabs.executeScript({
+                                code: "var x = document.getElementsByClassName('ytp-play-button')[0].getAttribute('aria-label');                    if(x===\"Play\")document.getElementsByClassName('ytp-play-button')[0].click();"
+                                        
+		    				});
+						
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
