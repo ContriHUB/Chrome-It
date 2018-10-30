@@ -498,7 +498,8 @@ $(document).ready(function(){
 							// Code to pause currently playing video.
 						// EASY: 6
 						chrome.tabs.executeScript({
-                                code: "document.getElementsByClassName('ytp-play-button')[0].click();"
+                                code: "var x = document.getElementsByClassName('ytp-play-button')[0].getAttribute('aria-label');                    if(x===\"Pause\")document.getElementsByClassName('ytp-play-button')[0].click();"
+                                        
 		    				});
 						
 					}
