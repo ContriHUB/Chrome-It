@@ -497,7 +497,10 @@ $(document).ready(function(){
 						// YOUTUBE SPECIFIC feature
 							// Code to pause currently playing video.
 						// EASY: 6
-						;
+						chrome.tabs.executeScript({
+                                code: "document.getElementsByClassName('ytp-play-button')[0].click();"
+		    				});
+						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
