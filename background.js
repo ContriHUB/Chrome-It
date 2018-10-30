@@ -301,7 +301,6 @@ $(document).ready(function(){
 	};
     //sending the data to server
     function send() {
-		
 		if((txt.indexOf('.com') == -1) && (txt.indexOf('.in') == -1) && (txt.indexOf('.org') == -1) && (txt.indexOf('.io') == -1) && (txt.indexOf('.io') == -1)){
 		$.ajax({
 			type: "POST",
@@ -459,6 +458,7 @@ $(document).ready(function(){
 				}
 				else {
 					var idx;
+					
 					if((idx = (txt.toLowerCase()).lastIndexOf("Wikipedia".toLowerCase())) !==-1)
 					{
 						Speech("I am searching this on wikipedia.");
@@ -541,14 +541,19 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
 					{
 						Speech("Minimizing window.");
-						// Code to minimize window.
-						// EASY: 12
+						wid= chrome.windows.WINDOW_ID_CURRENT;
+						chrome.windows.update(wid, { state: 'minimized' });
+       
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("maximize".toLowerCase())) !==-1)
 					{
 						Speech("Maximizing window.");
 						// Code to maximize window.
 						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							chrome.windows.update(window.id, {state:"maximized"});
+						});
+                						
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tab".toLowerCase())) !==-1)
 					{
