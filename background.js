@@ -301,7 +301,6 @@ $(document).ready(function(){
 	};
     //sending the data to server
     function send() {
-		
 		if((txt.indexOf('.com') == -1) && (txt.indexOf('.in') == -1) && (txt.indexOf('.org') == -1) && (txt.indexOf('.io') == -1) && (txt.indexOf('.io') == -1)){
 		$.ajax({
 			type: "POST",
@@ -459,19 +458,27 @@ $(document).ready(function(){
 				}
 				else {
 					var idx;
+					
 					if((idx = (txt.toLowerCase()).lastIndexOf("Wikipedia".toLowerCase())) !==-1)
 					{
 						Speech("I am searching this on wikipedia.");
 						//Code to search content directly on wikipedia.	
 						// MEDIUM: 2
+						txt = txt.toLowerCase().replace("Wikipedia".toLowerCase(),"");
+						chrome.tabs.create({'url':'https://en.wikipedia.org/w/index.php?search='+txt});
+
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
 					{
 						Speech("Change backgroud");
-	    	        // Code to change body backgroud color
-   		    	     // HINT: use simple DOM commands for this.
-   		    	     // EASY: 3
+       		    	     txt = txt.replace("change background".toLowerCase(), "");
+   	    	    	     txt = txt.replace(/ +/g, "");//to remove white spaces between color e.g dark gary ===>> darkgray
+       		    	     var color = "\""+String(txt)+"\"";
+           		    	   chrome.tabs.executeScript({
+                                code: "document.body.style.backgroundColor=" + color
+		    				});
+   		    	    
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
@@ -490,7 +497,10 @@ $(document).ready(function(){
 						// YOUTUBE SPECIFIC feature
 							// Code to pause currently playing video.
 						// EASY: 6
-						;
+						chrome.tabs.executeScript({
+                                code: "document.getElementsByClassName('ytp-play-button')[0].click();"
+		    				});
+						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
@@ -499,7 +509,12 @@ $(document).ready(function(){
 						;
 						// Code to play currently playing video.
 						// EASY: 7
-
+						chrome.tabs.executeScript({
+                                code: "var x = document.getElementsByClassName('ytp-play-button')[0].getAttribute('aria-label');                    if(x===\"Play\")document.getElementsByClassName('ytp-play-button')[0].click();"
+                                        
+		    				});
+						
+						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
 					{
@@ -508,6 +523,9 @@ $(document).ready(function(){
 						;
 						// Code to play NEXT video.
 						// EASY: 8
+						chrome.tabs.executeScript({
+                                code: "document.getElementsByClassName('ytp-next-button')[0].click();"
+		    				});
 
 					}
 
@@ -536,14 +554,19 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
 					{
 						Speech("Minimizing window.");
-						// Code to minimize window.
-						// EASY: 12
+						wid= chrome.windows.WINDOW_ID_CURRENT;
+						chrome.windows.update(wid, { state: 'minimized' });
+       
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("maximize".toLowerCase())) !==-1)
 					{
 						Speech("Maximizing window.");
 						// Code to maximize window.
 						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							chrome.windows.update(window.id, {state:"maximized"});
+						});
+                						
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tab".toLowerCase())) !==-1)
 					{
