@@ -464,6 +464,8 @@ $(document).ready(function(){
 						Speech("I am searching this on wikipedia.");
 						//Code to search content directly on wikipedia.	
 						// MEDIUM: 2
+						txt = txt.toLowerCase().replace("Wikipedia".toLowerCase(),"");
+						chrome.tabs.create({'url':'https://en.wikipedia.org/w/index.php?search='+txt});
 
 						
 					}
