@@ -509,7 +509,7 @@ $(document).ready(function(){
 						;
 						// Code to play currently playing video.
 						// EASY: 7
-
+						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
 					{
@@ -518,6 +518,9 @@ $(document).ready(function(){
 						;
 						// Code to play NEXT video.
 						// EASY: 8
+						chrome.tabs.executeScript({
+                                code: "document.getElementsByClassName('ytp-next-button')[0].click();"
+		    				});
 
 					}
 
