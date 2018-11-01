@@ -462,8 +462,12 @@ $(document).ready(function(){
 					if((idx = (txt.toLowerCase()).lastIndexOf("Wikipedia".toLowerCase())) !==-1)
 					{
 						Speech("I am searching this on wikipedia.");
-						//Code to search content directly on wikipedia.	
-						// MEDIUM: 2
+						txt=txt.replace('Wikipedia','');
+						if( ((txt.toLowerCase()).lastIndexOf("search".toLowerCase())) !==-1)
+							txt=txt.replace('Search','');
+						if( ((txt.toLowerCase()).lastIndexOf("on".toLowerCase())) !==-1)
+							txt=txt.replace('on','');
+						chrome.tabs.create({'url':'https://en.wikipedia.org/w/index.php?search='+txt});
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
