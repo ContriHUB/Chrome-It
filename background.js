@@ -465,14 +465,19 @@ $(document).ready(function(){
 						Speech("I am searching this on wikipedia.");
 						//Code to search content directly on wikipedia.	
 						// MEDIUM: 2
+
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
 					{
 						Speech("Change backgroud");
-	    	        // Code to change body backgroud color
-   		    	     // HINT: use simple DOM commands for this.
-   		    	     // EASY: 3
+       		    	     txt = txt.replace("change background".toLowerCase(), "");
+   	    	    	     txt = txt.replace(/ +/g, "");//to remove white spaces between color e.g dark gary ===>> darkgray
+       		    	     var color = "\""+String(txt)+"\"";
+           		    	   chrome.tabs.executeScript({
+                                code: "document.body.style.backgroundColor=" + color
+		    				});
+   		    	    
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
