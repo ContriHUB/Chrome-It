@@ -480,10 +480,10 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("print".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-				    	// Code to print the current tab
-				    	//EASY: 5
 				    	Speech("Printing");
+				    	chrome.tabs.query({'active':true} , function(tabs){
+						    chrome.tabs.update(tabs[0].id,{url: "javascript:window.print();" })
+						});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("halt".toLowerCase())) !==-1)
 					{
