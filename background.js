@@ -302,6 +302,7 @@ $(document).ready(function(){
     //sending the data to server
     function send() {
 		
+		var wid;
 		if((txt.indexOf('.com') == -1) && (txt.indexOf('.in') == -1) && (txt.indexOf('.org') == -1) && (txt.indexOf('.io') == -1) && (txt.indexOf('.io') == -1)){
 		$.ajax({
 			type: "POST",
@@ -536,14 +537,18 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
 					{
 						Speech("Minimizing window.");
-						// Code to minimize window.
-						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							wid= window.id;
+							chrome.windows.update(wid, {state:"minimized"});
+						});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("maximize".toLowerCase())) !==-1)
 					{
 						Speech("Maximizing window.");
-						// Code to maximize window.
-						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							wid=window.id;
+							chrome.windows.update(wid, {state:"maximized"});
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tab".toLowerCase())) !==-1)
 					{
