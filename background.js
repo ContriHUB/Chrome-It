@@ -492,11 +492,8 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("halt".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-						// YOUTUBE SPECIFIC feature
-							// Code to pause currently playing video.
-						// EASY: 6
-						;
+						var video = document.getElementsByTagName("video")[0];
+						video.pause();
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("play".toLowerCase())) !==-1)
 					{
