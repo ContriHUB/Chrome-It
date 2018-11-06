@@ -509,11 +509,19 @@ $(document).ready(function(){
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("next video".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-						// YOUTUBE SPECIFIC feature
-						;
-						// Code to play NEXT video.
-						// EASY: 8
+						var player;
+						  function onYouTubeIframeAPIReady() {
+							player = new YT.Player('player', {
+							  height: '390',
+							  width: '640',
+							  videoId: player.getVideoData()['video_id'],
+							  events: {
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+							  }
+							});
+						  }
+						player.nextVideo();					
 
 					}
 
