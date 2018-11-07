@@ -282,12 +282,27 @@ $(document).ready(function(){
 		
     }
     function provideJoke(){
-		// Complete the execution of this function to return a joke 
-    	// You may use APIs like http://api.icndb.com/jokes/random
+
+    	var xhr = new XMLHttpRequest();
+		xhr.open('GET', "https://icanhazdadjoke.com/");
+		xhr.setRequestHeader("Accept", "application/json");
+		xhr.send();
+		 
+		xhr.addEventListener("readystatechange", processRequest, false);
+		function processRequest(e) {
+		    if (xhr.readyState == 4 && xhr.status == 200) {
+		    	//alert(xhr.responseText);
+		        var response = xhr.responseText;
+		        x = JSON.parse(response);
+		        Speech(x["joke"]);
+		        //alert(x["joke"]);
+	   		}
+		}
 	};
     //sending the data to server
     function send() {
 		
+		var wid;
 		if((txt.indexOf('.com') == -1) && (txt.indexOf('.in') == -1) && (txt.indexOf('.org') == -1) && (txt.indexOf('.io') == -1) && (txt.indexOf('.io') == -1)){
 		$.ajax({
 			type: "POST",
@@ -395,21 +410,30 @@ $(document).ready(function(){
 						else if(data.result.metadata.intentName === "setting")
 						{
 							Speech("opening! Settings.");
-							// Add code for opening settings
-							// EASY:1 							
+							chrome.tabs.create({'url': 'chrome://settings/'});
+							alert(data.result.fulfillment.speech);						
 						}
 						else if(data.result.metadata.intentName === "open history")
 						{
 							Speech("opening! History.");
-							// Add code for opening history
-							// EASY:2
+							chrome.tabs.create({'url': 'chrome://history/'});
+							alert(data.result.fulfillment.speech);
+
 						}
 						else if(data.result.fulfillment.speech === "@prev"){
 
-			                 // Add code for moving to tab to immediate left
-			                   //(you may ignore the case where current tab is the leftmost).
-			                 // MEDIUM: 1
-			                Speech("opening! prev");
+			              	Speech("opening! prev");
+			                var currenttab;
+							chrome.tabs.getSelected(null, function(tab) {
+								currenttab = tab.id;										
+								chrome.tabs.query({}, function (tabs) {
+									for (var i = 1; i < tabs.length; i++) {
+										if(tabs[i].id == currenttab&&i!=0){
+											chrome.tabs.update(tabs[i-1].id, { active: true});
+										}
+									}
+								});
+							});
 						}
 						else {
 							if(data.result.metadata.intentName === "users_name"){
@@ -441,27 +465,30 @@ $(document).ready(function(){
 						Speech("I am searching this on wikipedia.");
 						//Code to search content directly on wikipedia.	
 						// MEDIUM: 2
+
 						
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("change background".toLowerCase())) !==-1)
 					{
 						Speech("Change backgroud");
-	    	        // Code to change body backgroud color
-   		    	     // HINT: use simple DOM commands for this.
-   		    	     // EASY: 3
+       		    	     txt = txt.replace("change background".toLowerCase(), "");
+   	    	    	     txt = txt.replace(/ +/g, "");//to remove white spaces between color e.g dark gary ===>> darkgray
+       		    	     var color = "\""+String(txt)+"\"";
+           		    	   chrome.tabs.executeScript({
+                                code: "document.body.style.backgroundColor=" + color
+		    				});
+   		    	    
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("let us".toLowerCase())) !==-1){
 						Speech("enjoy tetris");
-						            // Open tetris game in new tab.
-						            // HINT: You may use tetris.com 
-						   // EASY: 4
+						chrome.tabs.create({'url': 'https://tetris.com/'});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("print".toLowerCase())) !==-1)
 					{
-						//alert(txt);
-				    	// Code to print the current tab
-				    	//EASY: 5
 				    	Speech("Printing");
+				    	chrome.tabs.query({'active':true} , function(tabs){
+						    chrome.tabs.update(tabs[0].id,{url: "javascript:window.print();" })
+						});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("halt".toLowerCase())) !==-1)
 					{
@@ -493,8 +520,7 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("news".toLowerCase())) !==-1)
 					{
 						Speech("Opening");
-						//  Code to open google news.
-						// EASY: 9
+						chrome.tabs.create({'url': 'https://news.google.com/'});
                  		
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("inbox".toLowerCase())) !==-1)
@@ -505,8 +531,7 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("incognito".toLowerCase())) !==-1)
 					{
 						Speech("Opening incognito window.");
-						  // Code to open incognito window	
-						  // EASY: 10					
+						chrome.windows.create({'incognito': true});								
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("backward".toLowerCase())) !==-1)
 					{
@@ -517,25 +542,33 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).lastIndexOf("minimise".toLowerCase())) !==-1)
 					{
 						Speech("Minimizing window.");
-						// Code to minimize window.
-						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							wid= window.id;
+							chrome.windows.update(wid, {state:"minimized"});
+						});
 					}
 					else if((idx = (txt.toLowerCase()).lastIndexOf("maximize".toLowerCase())) !==-1)
 					{
 						Speech("Maximizing window.");
-						// Code to maximize window.
-						// EASY: 12
+						chrome.windows.getCurrent(function (window){
+							wid=window.id;
+							chrome.windows.update(wid, {state:"maximized"});
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tab".toLowerCase())) !==-1)
 					{
-						// var integer = parseInt(txt.substring(4));
 						Speech("Moving to tab"+integer);
-						// Code to move to a particular indexed tab
-						//// EASY: 13
+						var ind = parseInt(txt.match(/\d+/))-1;
+						chrome.tabs.query({'index':ind}, function (tabs) {
+							
+							chrome.tabs.update(tabs[0].id,{'active':true});
+
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("arrange heading".toLowerCase())) !==-1)
 					{
 						Speech("Arranging the headings of the tab");
+
 			            // Code to arrange tabs alphabetically
 					// MEDIUM: 3
 						var move = function(tabs){
@@ -555,6 +588,17 @@ $(document).ready(function(){
 					}
 						    chrome.tabs.query({ currentWindow: true}, move);
 			            
+=======
+			           	chrome.tabs.query({},function(tabs){
+							tabs.sort(function(a,b){
+								if(a.title<b.title) return -1;
+								else if(a.title>b.title) return 1;
+								else return 0;
+							});
+							for(var i=0 ;i< tabs.length;i++)
+								chrome.tabs.move(tabs[i].id, {index: i});
+						});
+
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("group content".toLowerCase())) !==-1)
 					{
@@ -567,14 +611,16 @@ $(document).ready(function(){
 					else if((idx = (txt.toLowerCase()).indexOf("zoom in".toLowerCase())) !==-1)
 					{
 						Speech("Zooming in.");
-						  // Code to zoom in
-						  // EASY: 14
+						chrome.tabs.getZoom(function(zoomFactor){
+							chrome.tabs.setZoom(zoomFactor+0.1);
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("zoom out".toLowerCase())) !==-1)
 					{
 						Speech("Zooming out.");
-						// Code to zoom out
-						// EASY: 14
+						chrome.tabs.getZoom(function(zoomFactor){
+							chrome.tabs.setZoom(zoomFactor-0.1);
+						});
 					}
 					else if((idx = (txt.toLowerCase()).indexOf("tell me a joke".toLowerCase())) !==-1)
 					{
